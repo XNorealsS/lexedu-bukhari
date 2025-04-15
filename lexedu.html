@@ -30,7 +30,7 @@
                     <a href="#">Home</a>
                     <a href="#">About</a>
                     <a href="#">Services</a>
-                    <a href="blog.html">Blog</a>
+                    <div href="blog.html">Blog</a>
                 </div>
                 
                 <div class="search-contact">
@@ -38,6 +38,7 @@
                         <input type="search" placeholder="Cari informasi..." aria-label="Search">
                     </div>
                     <a href="#">Contact Us</a>
+                    <a style="background-color: rgb(255, 255, 255); color: black;" href="#">Login</a>
                 </div>
             </nav>
         </div>
@@ -45,18 +46,19 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
             <div class="mobile-nav">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Blog</a>
+                <a href="#">Utama</a>
+                <a href="#">Informasi</a>
+                <a href="#">E-Book</a>
+                <a href="#">Bertanya</a>
             </div>
             
             <div class="mobile-search-contact">
-                <div class="mobile-search-bar">
-                    <input type="search" placeholder="Cari informasi..." aria-label="Search">
-                </div>
+                
                 <div class="mobile-contact">
                     <a href="#">Contact Us</a>
+                    <br>
+                    <a style="background-color: #1fad4d; color: rgb(255, 255, 255);" href="#">Login</a>
+
                 </div>
             </div>
         </div>
@@ -206,83 +208,92 @@
               class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
               placeholder="Tulis pertanyaan hukum Anda di sini..."></textarea>
           </div>
-          <div class="text-center">
-            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-colors">
-              Ajukan Pertanyaan
-            </button>
+        </div>
+      </section>
+
+     
+
+
+      <section class="question-form-section py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl font-bold text-center mb-6">Ada Pertanyaan Yang Ingin Ada Ajukan?</h2>
+      
+          <!-- Card Penjelasan -->
+          <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-10">
+            <div class="flex items-start space-x-4">
+              <div class="text-green-600 text-3xl">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2 text-gray-800">Apa yang bisa Anda tanyakan?</h3>
+                <p class="text-gray-600 mb-2">
+                  Anda dapat mengajukan pertanyaan seputar permasalahan hukum yang sedang Anda alami, seperti:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                  <li>Sengketa tanah, warisan, atau perjanjian jual beli</li>
+                  <li>Perceraian, hak asuh anak, atau pembagian harta</li>
+                  <li>Masalah pidana seperti penipuan, pencemaran nama baik</li>
+                  <li>PHK sepihak, gaji tidak dibayar, atau kontrak kerja</li>
+                  <li>Persoalan hutang piutang, perjanjian bisnis, Agama, Dll</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
-    </div>
-  </section>
-  
-  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-    <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold text-gray-800">Login Diperlukan</h3>
-        <button id="closeLoginModal" class="text-gray-400 hover:text-gray-600">
-          <i class="fas fa-times text-xl"></i>
-        </button>
-      </div>
-      <div class="mb-6">
-        <p class="text-gray-600 mb-4">Silakan login terlebih dahulu untuk mengajukan pertanyaan hukum.</p>
-        <form id="loginForm">
-          <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-            <input type="email" id="email" name="email" 
-              class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
-              placeholder="Email Anda">
+      
+          <!-- Form Pertanyaan -->
+          <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <form id="legalQuestionForm">
+              <div class="mb-4">
+                <label for="legalQuestion" class="block text-gray-700 font-medium mb-2">Pertanyaan Anda</label>
+                <textarea id="legalQuestion" name="legalQuestion" rows="5"
+                  class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+                  placeholder="Tulis pertanyaan hukum Anda di sini..."></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit"
+                  class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-colors">
+                  Ajukan Pertanyaan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      
+
+      <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-800">Login Diperlukan</h3>
+            <button id="closeLoginModal" class="text-gray-400 hover:text-gray-600">
+              <i class="fas fa-times text-xl"></i>
+            </button>
           </div>
           <div class="mb-6">
-            <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
-            <input type="password" id="password" name="password" 
-              class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
-              placeholder="Password">
+            <p class="text-gray-600 mb-4">Silakan login terlebih dahulu untuk mengajukan pertanyaan hukum.</p>
+            <form id="loginForm">
+              <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" 
+                  class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+                  placeholder="Email Anda">
+              </div>
+              <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                <input type="password" id="password" name="password" 
+                  class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+                  placeholder="Password">
+              </div>
+              <div class="flex justify-between items-center">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
+                  Login
+                </button>
+                <a href="#" class="text-green-600 hover:text-green-700 text-sm">Daftar Akun Baru</a>
+              </div>
+            </form>
           </div>
-          <div class="flex justify-between items-center">
-            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
-              Login
-            </button>
-            <a href="#" class="text-green-600 hover:text-green-700 text-sm">Daftar Akun Baru</a>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const questionForm = document.getElementById('legalQuestionForm');
-      const loginModal = document.getElementById('loginModal');
-      const closeLoginBtn = document.getElementById('closeLoginModal');
-      
-      // Show login modal when form is submitted
-      questionForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        loginModal.classList.remove('hidden');
-      });
-      
-      // Close modal when close button is clicked
-      closeLoginBtn.addEventListener('click', function() {
-        loginModal.classList.add('hidden');
-      });
-      
-      // Close modal when clicking outside
-      window.addEventListener('click', function(e) {
-        if (e.target === loginModal) {
-          loginModal.classList.add('hidden');
-        }
-      });
-      
-      // For demo purposes - prevent default on login form
-      const loginForm = document.getElementById('loginForm');
-      loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Here you would typically handle the login process
-        alert('Login functionality would be implemented here');
-      });
-    });
-  </script>
 
 <!-- Footer Section -->
 <footer class="bg-gray-900 text-white pt-12 pb-6">
@@ -388,6 +399,9 @@
             </div>
         </div>
         
+
+
+
         <!-- Newsletter -->
         <!-- <div class="bg-gray-800 p-6 rounded-lg mb-10">
             <div class="flex flex-col md:flex-row md:items-center justify-between">
@@ -415,9 +429,6 @@
         </div>
     </div>
 </footer>
-
-
-
 
 
 <script src="js/sc.js"></script>

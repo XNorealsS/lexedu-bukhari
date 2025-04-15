@@ -63,3 +63,35 @@
   }, 5000);
   
   updateCarousel();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const questionForm = document.getElementById('legalQuestionForm');
+    const loginModal = document.getElementById('loginModal');
+    const closeLoginBtn = document.getElementById('closeLoginModal');
+    
+    // Show login modal when form is submitted
+    questionForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      loginModal.classList.remove('hidden');
+    });
+    
+    // Close modal when close button is clicked
+    closeLoginBtn.addEventListener('click', function() {
+      loginModal.classList.add('hidden');
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+      if (e.target === loginModal) {
+        loginModal.classList.add('hidden');
+      }
+    });
+    
+    // For demo purposes - prevent default on login form
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would typically handle the login process
+      alert('Login functionality would be implemented here');
+    });
+  });
