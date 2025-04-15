@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+    <title>LexEdu</title>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-logo">
+            <div class="logo">
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center">
+                        <div class="logo-text mr-2">Lex<span>Edu</span></div>
+                        <div class="text-xs text-gray-500">Hukum dan Edukasi</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <i class='bx bx-menu'></i>
+            </button>
+            
+            <nav class="navbar">
+                <div class="nav">
+                    <a href="#">Utama</a>
+                    <a href="#">Artikel</a>
+                    <a href="#">E-Book</a>
+                    <a href="#">Edukasi</a>
+                    <a href="#">Bertanya</a>
+                </div>
+
+                
+                <div class="search-contact">
+                    <div class="search-bar">
+                        <input type="search" placeholder="Cari informasi..." aria-label="Search">
+                    </div>
+                    <a href="#">Contact Us</a>
+                    <a style="background-color: rgb(255, 255, 255); color: black;" href="#">Login</a>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-nav">
+                <a href="#">Utama</a>
+                <a href="#">Artikel</a>
+                <a href="#">E-Book</a>
+                <a href="#">Edukasi</a>
+                <a href="#">Bertanya</a>
+            </div>
+
+            
+            <div class="mobile-search-contact">
+                
+                <div class="mobile-contact">
+                    <a href="#">Contact Us</a>
+                    <br>
+                    <a style="background-color: #1fad4d; color: rgb(255, 255, 255);" href="#">Login</a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="keterangan">
+        <div class="emanoil">
+            <p><i class='bx bxs-map'></i> Selamat Datang di LexEdu</p>
+        </div>
+    </div>
+
+
+        <style>
+            /* Custom styles for video section */
+            .video-grid-item:hover .video-thumbnail {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
+            .video-thumbnail {
+                transition: transform 0.3s ease;
+            }
+            .video-feature-container {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+                height: 0;
+                overflow: hidden;
+            }
+            .video-feature-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            .video-thumbnail-container {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+                height: 0;
+                overflow: hidden;
+            }
+            .video-thumbnail-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+                pointer-events: none; /* Prevent interaction until clicked */
+            }
+            .play-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0, 0, 0, 0.2);
+                transition: background-color 0.3s ease;
+            }
+            .play-overlay:hover {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            .play-icon {
+                font-size: 3rem;
+                color: white;
+                opacity: 0.9;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            .play-overlay:hover .play-icon {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        </style>
+        <title>LexEdu - Video Pembelajaran</title>
+    </head>
+    <body>
+        <!-- Video Gallery Section -->
+        <section class="video-learning-section py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold text-center mb-8 text-green-600 relative">
+                    Video Pembelajaran Hukum
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-600 -mb-2"></span>
+                </h2>
+                
+                <!-- Video Filter Categories -->
+                <div class="flex flex-wrap items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <button class="bg-green-600 text-white px-4 py-2 m-1 rounded-full text-sm font-medium">Semua Video</button>
+                    </div>
+                    <div class="w-full sm:w-auto mt-3 sm:mt-0">
+                        <div class="relative">
+                            <input type="text" placeholder="Cari video berdasarkan judul.." class="w-full sm:w-64 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-transparent" />
+                            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary-green">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Video 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" 
+                                title="Dasar-Dasar Hukum Perdata"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, 'dQw4w9WgXcQ'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Dasar-Dasar Hukum Perdata Indonesia</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Prof. Anwar Hidayat</p>
+                                    <p class="text-xs text-gray-500"> 1 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/ZXsQAXx_ao0?controls=0" 
+                                title="Proses Peradilan Pidana"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, 'ZXsQAXx_ao0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Proses Peradilan Pidana di Indonesia</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Ayu Pratiwi, S.H.</p>
+                                    <p class="text-xs text-gray-500"> 3 minggu lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9bZkp7q19f0?controls=0" 
+                                title="Hukum Kontrak Bisnis"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, '9bZkp7q19f0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Membuat Kontrak Bisnis yang Aman</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Bukhari</p>
+                                    <p class="text-xs text-gray-500">2 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9bZkp7q19f0?controls=0" 
+                                title="Hukum Kontrak Bisnis"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, '9bZkp7q19f0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Membuat Kontrak Bisnis yang Aman</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Bukhari</p>
+                                    <p class="text-xs text-gray-500">2 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9bZkp7q19f0?controls=0" 
+                                title="Hukum Kontrak Bisnis"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, '9bZkp7q19f0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Membuat Kontrak Bisnis yang Aman</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Bukhari</p>
+                                    <p class="text-xs text-gray-500">2 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9bZkp7q19f0?controls=0" 
+                                title="Hukum Kontrak Bisnis"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, '9bZkp7q19f0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Membuat Kontrak Bisnis yang Aman</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Bukhari</p>
+                                    <p class="text-xs text-gray-500">2 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/9bZkp7q19f0?controls=0" 
+                                title="Hukum Kontrak Bisnis"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, '9bZkp7q19f0'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Membuat Kontrak Bisnis yang Aman</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dr. Bukhari</p>
+                                    <p class="text-xs text-gray-500">2 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden video-grid-item">
+                        <div class="relative video-thumbnail-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/fJ9rUzIMcZQ?controls=0" 
+                                title="Hukum HAM Internasional"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                            </iframe>
+                            <a href="#" class="play-overlay" onclick="playVideo(this, 'fJ9rUzIMcZQ'); return false;">
+                                <i class="fas fa-play-circle play-icon"></i>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium mb-2">Penerapan Hukum HAM Internasional</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                                    <i class="fas fa-user text-gray-600 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Prof. Siti Nurhaliza</p>
+                                    <p class="text-xs text-gray-500">643 tayangan • 3 bulan lalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="text-center mt-10">
+                    <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-3 rounded-md font-medium transition-colors">
+                        Muat Lebih Banyak <i class="fas fa-chevron-down ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- JavaScript for Video Playing -->
+        <script>
+            function playVideo(element, videoId) {
+                // Get the parent iframe container
+                const container = element.closest('.video-thumbnail-container');
+                
+                // Replace the thumbnail with the actual video
+                container.innerHTML = `<iframe 
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1" 
+                    title="YouTube video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>`;
+            }
+        </script>
+
+
+
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+        <!-- Footer Top Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <!-- Company Info -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <h3 class="text-2xl font-bold">Lex<span class="text-green-500">Edu</span></h3>
+                </div>
+                <p class="text-gray-400 mb-4">Menyediakan informasi hukum dan edukasi berkualitas untuk semua kalangan. Membantu Anda memahami aspek legal dengan cara yang mudah dimengerti.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Link Cepat</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Beranda
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Tentang Kami
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Layanan
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Blog
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> FAQ
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- Services -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Layanan Kami</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Konsultasi Hukum
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Pelatihan Legal
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Material Edukasi
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Webinar Hukum
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Pendampingan Legal
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Kontak Kami</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-green-500"></i>
+                        <span class="text-gray-400">Jl. Hukum Pendidikan No. 123, Jakarta Selatan, Indonesia</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt mr-3 text-green-500"></i>
+                        <span class="text-gray-400">+62 812 3456 7890</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-green-500"></i>
+                        <span class="text-gray-400">info@lexedu.id</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock mr-3 text-green-500"></i>
+                        <span class="text-gray-400">Senin - Jumat: 09:00 - 17:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+
+
+
+        <!-- Newsletter -->
+        <!-- <div class="bg-gray-800 p-6 rounded-lg mb-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-2">Berlangganan Newsletter</h4>
+                    <p class="text-gray-400">Dapatkan update terbaru tentang hukum dan edukasi</p>
+                </div>
+                <div class="flex flex-col sm:flex-row">
+                    <input type="email" placeholder="Email Anda" class="px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-2 sm:mb-0 sm:mr-2">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors">Berlangganan</button>
+                </div>
+            </div>
+        </div> -->
+        
+        <!-- Footer Bottom -->
+        <div class="pt-6 border-t border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 LexEdu. Hak Cipta Dilindungi.</p>
+                <div class="flex flex-wrap justify-center space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Peta Situs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/sc.js"></script>
+</body>
+</html>
