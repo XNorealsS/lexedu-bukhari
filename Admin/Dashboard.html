@@ -31,77 +31,117 @@
         .border-gold-yellow {
             border-color: var(--gold-yellow);
         }
-        .side
-        .sidebar a.bg-gray-900 {
-    border-left: 4px solid var(--primary-green);
-}
-
-        bar-icon {
+        .sidebar-icon {
             width: 24px;
             height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        .sidebar {
+            transition: transform 0.3s ease;
+            z-index: 30;
+        }
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        .main-content {
+            transition: margin-left 0.3s ease;
+        }
+        .sidebar-toggle {
+            transition: left 0.3s ease;
+        }
+        .sidebar a.active {
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 70px;
-            }
-            .sidebar-text {
-                display: none;
-            }
             .main-content {
-                margin-left: 70px;
+                width: 100%;
+                margin-left: 0;
+            }
+            
+            .sidebar-toggle-fixed {
+                position: fixed;
+                z-index: 40;
+                top: 0.75rem;
+                left: 0.75rem;
+            }
+            
+            .mobile-header {
+                padding-left: 3rem;
             }
         }
+        .logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #31a24c;
+}
+
+.logo-text span { 
+  color: #e3b53b;
+}
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
-    <div class="flex h-screen">
+    <div class="flex h-screen relative">
         <!-- Sidebar -->
-        <div class="bg-gray-800 text-white w-64 sidebar flex-shrink-0 fixed h-full overflow-y-auto">
+        <div id="sidebar" class="bg-gray-800 text-white w-64 fixed h-full overflow-y-auto sidebar">
             <div class="p-4 bg-primary-green flex items-center">
                 <i class="fas fa-tachometer-alt text-2xl mr-3 sidebar-icon"></i>
-                <span class="font-bold text-lg sidebar-text">Admin Panel</span>
+                <span class="font-bold text-lg">Admin Panel</span>
             </div>
             
             <nav class="mt-4">
-                <a href="#" data-file="dashboard-home.html" class="flex items-center p-4 bg-gray-900 text-white  hover:bg-gray-700">
+                <a href="#" data-file="dashboard-home.html" class="flex items-center p-4 bg-gray-900 text-white hover:bg-gray-700 active">
                     <i class="fas fa-chart-line text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Dashboard</span>
+                    <span>Dashboard</span>
                 </a>
                 <a href="#" data-file="pertanyaan.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-question-circle text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Pertanyaan</span>
+                    <span>Pertanyaan</span>
                 </a>
-                <a href="#"  data-file="artikel.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
+                <a href="#" data-file="artikel.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-newspaper text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Artikel</span>
+                    <span>Artikel</span>
                 </a>
-                <a href="#"   data-file="vidioNpdf.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
+                <a href="#" data-file="vidioNpdf.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-file-video text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Video & PDF</span>
+                    <span>Video & PDF</span>
                 </a>
-                <a href="#"  data-file="Banner.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
+                <a href="#" data-file="Banner.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-image text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Banner</span>
+                    <span>Banner</span>
                 </a>
-                <a href="#"  data-file="Pengguna.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
+                <a href="#" data-file="Pengguna.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-users text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Pengguna</span>
+                    <span>Pengguna</span>
                 </a>
-                <a href="#"  data-file="pengaturan.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
+                <a href="#" data-file="pengaturan.html" class="flex items-center p-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-cog text-xl mr-3 sidebar-icon"></i>
-                    <span class="sidebar-text">Pengaturan</span>
+                    <span>Pengaturan</span>
                 </a>
             </nav>
         </div>
 
+        <!-- Sidebar Toggle Button (Fixed when sidebar is collapsed) -->
+        <button id="sidebar-toggle" class="sidebar-toggle fixed z-40 top-4 left-4 bg-gray-800 text-white p-2 rounded-md shadow-md hidden">
+            <i id="toggle-icon" class="fas fa-bars"></i>
+        </button>
+
         <!-- Main Content -->
-        <div class="flex-1 ml-64 main-content flex flex-col">
+        <div id="main-content" class="flex-1 ml-64 flex flex-col main-content">
             <!-- Header -->
-            <header class="bg-white shadow-md p-4 flex justify-between items-center">
-                <h1 class="text-xl font-bold">Dashboard Admin</h1>
+            <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-20">
+                <div class="flex items-center">
+                    <button id="sidebar-toggle-header" class="mr-4 text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <div class="flex items-center">
+                        <div class="logo-text mr-2">Lex<span>Edu</span></div>
+                    </div>
+                </div>
                 <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded flex items-center">
                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
                 </button>
@@ -113,9 +153,6 @@
                     <!-- Konten akan dimuat di sini -->
                 </div>
             </main>
-            
-            
-            
         </div>
     </div>
     <script>
@@ -140,38 +177,156 @@
                 });
         }
     
-        window.onload = function () {
-            loadContent("dashboard-home.html");
-            setActiveSidebar(document.querySelector("[data-file='dashboard-home.html']"));
-        };
-    
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll("nav a").forEach(link => {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const target = this.getAttribute("data-file");
-                    if (target) {
-                        loadContent(target);
-                        setActiveSidebar(this);
+        // Elements
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const sidebarToggleHeader = document.getElementById("sidebar-toggle-header");
+        const toggleIcon = document.getElementById("toggle-icon");
+        
+        // Toggle sidebar function - completely rewritten
+        function toggleSidebar() {
+            const isSidebarCollapsed = sidebar.classList.contains("collapsed");
+            
+            // Toggle collapsed state
+            sidebar.classList.toggle("collapsed");
+            
+            if (!isSidebarCollapsed) {
+                // Collapsing sidebar
+                mainContent.classList.remove("ml-64");
+                mainContent.classList.add("ml-0");
+                toggleIcon.classList.remove("fa-chevron-left");
+                toggleIcon.classList.add("fa-chevron-right");
+            } else {
+                // Expanding sidebar
+                mainContent.classList.remove("ml-0");
+                mainContent.classList.add("ml-64");
+                toggleIcon.classList.remove("fa-chevron-right");
+                toggleIcon.classList.add("fa-chevron-left");
+            }
+            
+            // Update toggle button visibility
+            updateToggleButtonState();
+        }
+        
+        // Update toggle button visibility
+        function updateToggleButtonState() {
+            const isSidebarCollapsed = sidebar.classList.contains("collapsed");
+            const isMobile = window.innerWidth < 768;
+            
+            // Always show toggle button when sidebar is collapsed
+            if (isSidebarCollapsed) {
+                sidebarToggle.classList.remove("hidden");
+                // Make sure the button is in correct position (left corner)
+                sidebarToggle.classList.add("sidebar-toggle-fixed");
+                sidebarToggle.style.left = "0.75rem"; // Reset left position
+            } 
+            // For desktop with expanded sidebar, hide the fixed toggle
+            else if (!isMobile) {
+                sidebarToggle.classList.add("hidden");
+            }
+            
+            // For mobile devices, always keep header toggle visible
+            if (isMobile) {
+                document.querySelector("header").classList.add("mobile-header");
+            } else {
+                document.querySelector("header").classList.remove("mobile-header");
+            }
+        }
+        
+        // Handle responsive behavior
+        function handleResponsiveLayout() {
+            const isMobile = window.innerWidth < 768;
+            const isSidebarCollapsed = sidebar.classList.contains("collapsed");
+            
+            // On mobile: collapse sidebar if expanded
+            if (isMobile && !isSidebarCollapsed) {
+                sidebar.classList.add("collapsed");
+                mainContent.classList.remove("ml-64");
+                mainContent.classList.add("ml-0");
+                toggleIcon.classList.remove("fa-chevron-left", "fa-bars");
+                toggleIcon.classList.add("fa-chevron-right");
+            } 
+            // On desktop: expand sidebar if it's collapsed (unless user manually collapsed it)
+            else if (!isMobile && isSidebarCollapsed && !sessionStorage.getItem("sidebarManuallyCollapsed")) {
+                sidebar.classList.remove("collapsed");
+                mainContent.classList.remove("ml-0");
+                mainContent.classList.add("ml-64");
+                toggleIcon.classList.remove("fa-chevron-right");
+                toggleIcon.classList.add("fa-chevron-left");
+            }
+            
+            updateToggleButtonState();
+        }
+        
+        // Toggle sidebar events
+        sidebarToggleHeader.addEventListener("click", function() {
+            toggleSidebar();
+            // Remember user preference
+            if (sidebar.classList.contains("collapsed")) {
+                sessionStorage.setItem("sidebarManuallyCollapsed", "true");
+            } else {
+                sessionStorage.removeItem("sidebarManuallyCollapsed");
+            }
+        });
+        
+        sidebarToggle.addEventListener("click", function() {
+            toggleSidebar();
+            // Remember user preference
+            if (sidebar.classList.contains("collapsed")) {
+                sessionStorage.setItem("sidebarManuallyCollapsed", "true");
+            } else {
+                sessionStorage.removeItem("sidebarManuallyCollapsed");
+            }
+        });
+        
+        // Navigation functionality
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = this.getAttribute("data-file");
+                if (target) {
+                    loadContent(target);
+                    setActiveSidebar(this);
+                    
+                    // Auto-collapse sidebar on mobile after navigation
+                    if (window.innerWidth < 768 && !sidebar.classList.contains("collapsed")) {
+                        toggleSidebar();
+                        sessionStorage.setItem("sidebarManuallyCollapsed", "true");
                     }
-                });
+                }
             });
         });
-    
+        
+        // Set active sidebar item
         function setActiveSidebar(activeLink) {
             document.querySelectorAll("nav a").forEach(link => {
-                link.classList.remove("bg-gray-900", "text-white");
+                link.classList.remove("bg-gray-900", "text-white", "active");
                 link.classList.add("text-gray-300");
             });
             activeLink.classList.remove("text-gray-300");
-            activeLink.classList.add("bg-gray-900", "text-white");
+            activeLink.classList.add("bg-gray-900", "text-white", "active");
         }
-    
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('hidden');
-        }
+        
+        // Initialize
+        window.addEventListener("load", function() {
+            loadContent("dashboard-home.html");
+            setActiveSidebar(document.querySelector("nav a.active"));
+            
+            // Check if there's a saved preference
+            if (sessionStorage.getItem("sidebarManuallyCollapsed")) {
+                sidebar.classList.add("collapsed");
+                mainContent.classList.remove("ml-64");
+                mainContent.classList.add("ml-0");
+                toggleIcon.classList.remove("fa-bars");
+                toggleIcon.classList.add("fa-chevron-right");
+            }
+            
+            handleResponsiveLayout();
+        });
+        
+        // Handle window resize
+        window.addEventListener("resize", handleResponsiveLayout);
     </script>
-    
 </body>
 </html>
