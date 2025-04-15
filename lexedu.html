@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexEdu - Hukum dan Edukasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        .diagonal-bg {
+            background: linear-gradient(135deg, #f4f4f4 60%, #f0d78c 40%);
+        }
+        
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            margin: 0 4px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .carousel-indicator.active {
+            background-color: #333;
+        }
+        
+        /* Custom Header Styles */
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #31a24c;
+        }
+        
+        .logo-text span {
+            color: #e3b53b;
+        }
+        
+        .section-title {
+            position: relative;
+            color: #e3b53b;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e3b53b;
+        }
+        
+        .consultation-form {
+            background-image: url('https://api.placeholder.com/scales-of-justice');
+            background-size: contain;
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex justify-between items-center py-2">
+                <div class="flex items-center">
+                    <div class="logo-text mr-2">Lex<span>Edu</span></div>
+                    <div class="text-xs text-gray-500">Hukum dan Edukasi</div>
+                </div>
+                
+                <div class="flex space-x-8">
+                    <div class="social-links flex space-x-2">
+                        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <div class="flex justify-between items-center py-2 bg-green-500 rounded-t-md">
+                <nav class="flex-1">
+                    <ul class="flex space-x-6 px-4">
+                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
+                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
+                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
+                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="flex items-center space-x-4 px-4">
+                    <input type="text" placeholder="Cari..." class="p-1 rounded bg-white text-gray-600 text-sm w-40">
+                    <button class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600 text-sm">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Welcome Section -->
+    <section class="py-2 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt text-green-500"></i>
+                    <span class="text-sm">Selamat Datang di LexEdu</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-phone text-green-500"></i>
+                    <span class="text-sm">Nomor</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-envelope text-green-500"></i>
+                    <span class="text-sm">LexEdu@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Carousel Section -->
+    <section class="carousel relative bg-gray-300">
+        <div class="carousel-slide h-64" id="carouselSlide">
+            <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-xl mb-4">HEADER</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                    </div>
+                    <div class="hidden md:block w-1/2">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Content W x H</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-xl mb-4">HEADER</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                    </div>
+                    <div class="hidden md:block w-1/2">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Content W x H</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-xl mb-4">HEADER</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                    </div>
+                    <div class="hidden md:block w-1/2">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Content W x H</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-indicators absolute bottom-4 left-0 right-0">
+            <div class="flex justify-center">
+                <div class="carousel-indicator active" onclick="changeSlide(0)"></div>
+                <div class="carousel-indicator" onclick="changeSlide(1)"></div>
+                <div class="carousel-indicator" onclick="changeSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Informasi Dan Materi Section -->
+    <section class="py-12 diagonal-bg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl text-center section-title">Informasi Dan Materi</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">Header</h2>
+                        <p class="text-gray-700">JFWJDOWAAOEI NAIAWENFAISCA</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">CONTENT</h2>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">CONTENT</h2>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">CONTENT</h2>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">CONTENT</h2>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="bg-gray-600 h-48"></div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">CONTENT</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side informational content -->
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-yellow-100 rounded p-6">
+                    <h2 class="text-xl font-bold mb-4">HEADER</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-yellow-600">1.</span>
+                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-yellow-600">1.</span>
+                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-yellow-600">1.</span>
+                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-yellow-600">1.</span>
+                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="order-first lg:order-last">
+                    <div class="h-2 bg-yellow-500 w-full mb-12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Section -->
+    <section class="py-12 diagonal-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-gray-300 h-64 relative">
+                    <button class="absolute inset-0 w-full h-full bg-green-500 text-white font-bold text-lg opacity-70 hover:opacity-90">
+                        Tonton Video
+                    </button>
+                </div>
+                
+                <div class="bg-yellow-100 p-6">
+                    <h2 class="text-xl font-bold mb-4">HEADER</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <a href="#" class="text-blue-500 hover:underline">Lihat selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Dr. Bukhari Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl text-center section-title">Informasi Tentang Dr. Bukhari</h1>
+            
+            <div class="mt-12 bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="col-span-1">
+                        <img src="/api/placeholder/300/400" alt="Dr. Bukhari" class="w-full h-auto rounded-lg">
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <div class="mb-4 border-b-2 border-yellow-500 inline-block">
+                            <h2 class="text-xl font-bold">Komisioner BPSK Aceh Utara (2019–2024)</h2>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-4">Ahli Hukum Perlindungan Konsumen | Advokat | Mediator</h3>
+                        
+                        <p class="mb-4">Dr. Bukhari adalah seorang akademisi dan praktisi hukum yang aktif dalam berbagai kegiatan advokasi dan penyelesaian sengketa konsumen di Aceh. Ia menjabat sebagai Komisioner Badan Penyelesaian Sengketa Konsumen (BPSK) Aceh Utara, sebuah lembaga resmi yang bertugas menyelesaikan sengketa antara konsumen dan pelaku usaha di luar pengadilan. Selain itu, beliau juga dikenal sebagai:</p>
+                        
+                        <ul class="list-disc pl-6 mb-4">
+                            <li>Dosen hukum yang berpengalaman di bidang hukum perdata dan perlindungan hak konsumen.</li>
+                            <li>Mediator bersertifikat yang menangani berbagai kasus sengketa dengan pendekatan musyawarah.</li>
+                            <li>Advokat dengan pemahaman mendalam terhadap regulasi ketenagalistrikan, kontrak, dan perlindungan hak-hak konsumen.</li>
+                        </ul>
+                        
+                        <p class="mb-4">Dr. Bukhari juga aktif sebagai pembicara dalam berbagai forum diskusi hukum di Aceh, serta aktif mendorong edukasi masyarakat terhadap hak-hak hukum mereka, khususnya dalam hal transaksi konsumen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Konsultasi Hukum Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl text-center section-title">Layanan Konsultasi Hukum</h1>
+            
+            <div class="mt-12 bg-white rounded-lg border border-gray-200 p-6 shadow-sm max-w-2xl mx-auto consultation-form">
+                <h2 class="text-2xl font-bold mb-6 text-center">FORM PENGAJUAN<br>KONSULTASI HUKUM</h2>
+                
+                <form>
+                    <div class="mb-4">
+                        <label for="nama" class="block mb-2">Nama:</label>
+                        <input type="text" id="nama" class="w-full p-2 border rounded-md">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2">Email:</label>
+                        <input type="email" id="email" class="w-full p-2 border rounded-md">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="keluhan" class="block mb-2">Keluhan anda:</label>
+                        <textarea id="keluhan" class="w-full p-2 border rounded-md" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 inline-block">KIRIM PENGAJUAN</button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-6">
+                    <img src="/api/placeholder/180/180" alt="Timbangan Hukum" class="mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        
+        function changeSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const offset = -currentSlide * 100;
+            document.getElementById('carouselSlide').style.transform = `translateX(${offset}%)`;
+            
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        // Auto slideshow
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }, 5000);
+        
+        updateCarousel();
+    </script>
+</body>
+</html>

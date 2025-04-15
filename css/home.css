@@ -1,0 +1,111 @@
+:root {
+    --primary_green: #23B056;
+    --gold_yellow: #D4A017;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.nav-logo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+.h1 {
+    color: var(--gold_yellow);
+}
+
+.edu {
+    color: var(--primary_green);
+}
+
+.navbar {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: linear-gradient(45deg, transparent 10%, #1fad4d 1%);
+}
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 33px;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav a:hover {
+    color: #FEF08A;
+  }
+  
+  /* Search and Contact Section */
+  .search-contact {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+  
+  .search-bar input {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: none;
+    width: 25rem;
+    font-size: 0.875rem;
+  }
+  
+  .search-contact a {
+    background: #EAB308;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+  
+  .search-contact a:hover {
+    background: #CA8A04;
+  }
+
+  .keterangan{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .emanoil {
+    display: flex;
+    gap: 16px;
+    margin-left: 27em;
+  }
+
+.sosial {
+  display: flex;
+  font-size: 2em;
+  gap: 5px;
+
+}
