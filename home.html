@@ -2,30 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
     <title>LexEdu</title>
 </head>
 <body>
     <header class="header">
         <div class="nav-logo">
             <div class="logo">
-                <p class="lospan">
-                    <h1 class="h1">
-                        Lex<span class="edu">Edu</span>
-                    </h1>
-                    <span>Hukum dan Edukasi</span>
-                </p>
-                </span>
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center">
+                        <div class="logo-text mr-2">Lex<span>Edu</span></div>
+                        <div class="text-xs text-gray-500">Hukum dan Edukasi</div>
+                    </div>
+                    </div>
             </div>
+            
+            <button class="hamburger" id="hamburger-btn">
+                <i class='bx bx-menu'></i>
+            </button>
             
             <nav class="navbar">
                 <div class="nav">
                     <a href="">Home</a>
-                    <a href="">Home</a>
-                    <a href="">Home</a>
-                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Services</a>
+                    <a href="">Blog</a>
                 </div>
                 
                 <div class="search-contact">
@@ -36,20 +41,94 @@
                 </div>
             </nav>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-nav">
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Services</a>
+                <a href="">Blog</a>
+            </div>
+            
+            <div class="mobile-search-contact">
+                <div class="mobile-search-bar">
+                    <input type="search" placeholder="search">
+                </div>
+                <div class="mobile-contact">
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="keterangan">
         <div class="emanoil">
             <p><i class='bx bxs-map'></i> Selamat Datang di LexEdu</p>
-            <p><i class='bx bx-phone'></i> 1234-1234-1222-34</p>
-            <p><i class='bx bx-envelope' ></i> LexEdu@gmail.com</p>
-        </div>
-        <div class="sosial">
-            <a href=""><i class='bx bxl-instagram-alt' style='color:#e3046c'  ></i></a>
-            <a href=""><i class='bx bxl-facebook-circle' style='color:#003bff'  ></i></a>
-            <a href=""><i class='bx bxl-youtube' style='color:#e3041b'  ></i></a>
         </div>
     </div>
-    
+
+
+
+<!-- CONTENT -->
+ <!-- Carousel Section -->
+ <section class="carousel relative bg-gray-300">
+    <div class="carousel-slide h-64" id="carouselSlide">
+        <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+            <div class="container mx-auto flex">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-xl mb-4">HEADER</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                    <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                    <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                </div>
+                <div class="hidden md:block w-1/2">
+                    <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                        <span class="text-white text-sm">Content W x H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+            <div class="container mx-auto flex">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-xl mb-4">HEADER</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                    <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                    <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                </div>
+                <div class="hidden md:block w-1/2">
+                    <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                        <span class="text-white text-sm">Content W x H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item p-8 bg-gray-700 text-white flex items-center">
+            <div class="container mx-auto flex">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-xl mb-4">HEADER</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
+                    <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
+                    <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+                </div>
+                <div class="hidden md:block w-1/2">
+                    <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                        <span class="text-white text-sm">Content W x H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-indicators absolute bottom-4 left-0 right-0">
+        <div class="dd flex justify-center">
+            <div class="carousel-indicator active" onclick="changeSlide(0)"></div>
+            <div class="carousel-indicator" onclick="changeSlide(1)"></div>
+            <div class="carousel-indicator" onclick="changeSlide(2)"></div>
+        </div>
+    </div>
+</section>
+
+    <script src="js/sc.js"></script>
 </body>
 </html>
