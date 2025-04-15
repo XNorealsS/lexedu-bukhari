@@ -6,698 +6,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
     <title>LexEdu</title>
-    <style>
-        :root {
-            --primary-green: #23b056;
-            --gold-yellow: #d4a017;
-            --white: #ffffff;
-            --black: #000000;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Header and Navigation */
-        .header {
-            width: 100%;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-logo {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #31a24c;
-        }
-
-        .logo-text span {
-            color: #e3b53b;
-        }
-
-        .navbar {
-            width: 80%;
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(45deg, transparent 10%, #1fad4d 1%);
-            border-radius: 0 0 0 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav {
-            display: flex;
-            gap: 2rem;
-            margin-left: 33px;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: #fef08a;
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        /* Search and Contact Section */
-        .search-contact {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-right: 20px;
-        }
-
-        .search-bar input {
-            padding: 0.4rem 0.75rem;
-            border-radius: 4px;
-            border: 1px solid #e5e5e5;
-            width: 15rem;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 2px rgba(35, 176, 86, 0.2);
-        }
-
-        .search-contact a {
-            background: #eab308;
-            color: white;
-            padding: 0.4rem 1.2rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            text-decoration: none;
-            white-space: nowrap;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .search-contact a:hover {
-            background: #ca8a04;
-            transform: translateY(-2px);
-        }
-
-        .keterangan {
-            display: flex;
-            justify-content: center;
-            padding: 12px 20px;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .emanoil p {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .emanoil p i {
-            color: var(--primary-green);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary-green);
-            transition: color 0.3s ease;
-        }
-
-        .hamburger:hover {
-            color: var(--gold-yellow);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            padding: 20px;
-            flex-direction: column;
-            border-radius: 0 0 8px 8px;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .mobile-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .mobile-nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 10px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav a:hover {
-            background-color: #f0f0f0;
-            color: var(--primary-green);
-        }
-
-        .mobile-search-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .mobile-search-bar input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .mobile-search-bar input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-
-        .mobile-contact a {
-            display: block;
-            background: #eab308;
-            color: white;
-            padding: 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-contact a:hover {
-            background: #ca8a04;
-        }
-
-        /* Carousel Styles */
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: auto !important;
-            min-height: 20rem;
-        }
-
-        .carousel-item {
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 2rem;
-            box-sizing: border-box;
-        }
-
-        .carousel-item .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .carousel-item > .container > div {
-            flex: 1 1 100%;
-        }
-
-        .carousel-item h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            font-weight: 600;
-        }
-
-        .carousel-item p {
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .carousel-item button {
-            margin-top: 1.5rem;
-            background-color: var(--white);
-            color: var(--primary-green);
-            padding: 0.6rem 1.5rem;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .carousel-item button:hover {
-            background-color: #e6f4ea;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .carousel-item .content {
-            width: 100%;
-            height: 100%;
-            background-color: #4b5563;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.875rem;
-            overflow: hidden;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .dd {
-            display: flex;
-            gap: 10px;
-        }
-
-        .carousel-indicator {
-            width: 12px;
-            height: 12px;
-            background-color: #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-indicator.active {
-            background-color: #333;
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        .carousel-indicator:hover {
-            opacity: 0.9;
-        }
-
-        /* Section Styles */
-        .section-title {
-            position: relative;
-            color: #e3b53b;
-            margin-bottom: 3rem;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .section-title:after {
-            content: "";
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #e3b53b;
-        }
-
-        .diagonal-bg {
-            background: linear-gradient(135deg, #f4f4f4 60%, #f0d78c 40%);
-            padding: 5rem 0;
-        }
-
-        .content-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .content-card-img {
-            background-color: #4b4b4b;
-            height: 180px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-card h2 {
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .content-card p {
-            color: #666;
-        }
-
-        /* Video Section */
-        .video-section {
-            padding: 5rem 0;
-            background-color: #f9f9f9;
-        }
-
-        .video-container {
-            position: relative;
-            height: 100%;
-            background-color: #ddd;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .video-play-button {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(35, 176, 86, 0.7);
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .video-play-button:hover {
-            background-color: rgba(35, 176, 86, 0.85);
-        }
-
-        .video-info {
-            background-color: #fff9e5;
-            padding: 2rem;
-            border-radius: 8px;
-            height: 100%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .video-info h2 {
-            color: #333;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-
-        .video-info h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--gold-yellow);
-        }
-
-        .video-info p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .video-info a {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--primary-green);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .video-info a:hover {
-            color: var(--gold-yellow);
-            text-decoration: underline;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding-top: 4rem;
-            padding-bottom: 2rem;
-        }
-
-        footer h3, footer h4 {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        footer h3 span {
-            color: var(--primary-green);
-        }
-
-        footer h4::after {
-            content: "";
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 2rem;
-            height: 2px;
-            background-color: var(--primary-green);
-        }
-
-        footer p {
-            color: #b3b3b3;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        footer .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        footer .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        footer .social-icons a:hover {
-            background-color: var(--primary-green);
-            transform: translateY(-3px);
-        }
-
-        footer ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        footer ul li a {
-            display: flex;
-            align-items: center;
-            color: #b3b3b3;
-            transition: all 0.3s ease;
-        }
-
-        footer ul li a:hover {
-            color: var(--primary-green);
-            transform: translateX(5px);
-        }
-
-        footer ul li a i {
-            font-size: 0.7rem;
-            margin-right: 0.5rem;
-        }
-
-        footer .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        footer .contact-info li i {
-            margin-right: 1rem;
-            margin-top: 0.25rem;
-        }
-
-        footer .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            margin-top: 3rem;
-        }
-
-        footer .footer-bottom a {
-            color: #b3b3b3;
-            transition: all 0.3s ease;
-        }
-
-        footer .footer-bottom a:hover {
-            color: var(--primary-green);
-        }
-
-        /* Responsive Styles */
-        @media screen and (min-width: 768px) {
-            .carousel-item > .container > div {
-                flex: 1 1 48%;
-            }
-
-            .content-card-img {
-                height: 160px;
-            }
-        }
-
-        @media screen and (max-width: 1024px) {
-            .navbar {
-                width: 75%;
-            }
-
-            .search-bar input {
-                width: 12rem;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .navbar {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .keterangan {
-                flex-direction: column;
-                text-align: center;
-                padding: 10px;
-            }
-
-            .mobile-menu.active {
-                display: flex;
-            }
-
-            .carousel-item {
-                padding: 1.5rem 1rem;
-            }
-
-            .carousel-item h2 {
-                font-size: 1.25rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .content-card-img {
-                height: 120px;
-            }
-
-            .video-info {
-                margin-top: 1.5rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .nav-logo {
-                padding: 10px;
-            }
-
-            .logo-text {
-                font-size: 20px;
-            }
-
-            .keterangan {
-                font-size: 0.9rem;
-            }
-
-            .carousel-item {
-                padding: 1rem;
-            }
-
-            .carousel-item h2 {
-                font-size: 1.1rem;
-            }
-
-            .carousel-item p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .content-card-img {
-                height: 100px;
-            }
-
-            .content-card h2 {
-                font-size: 1rem;
-            }
-
-            .video-info h2 {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="header">
@@ -876,132 +186,97 @@
         </div>
     </section>
 
-<!-- Legal Consultation Form Section -->
-<section class="py-16 bg-gray-100">
+
+
+
+<section class="question-form-section py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Konsultasi Hukum Online</h2>
-      
-      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <form id="consultationForm" class="space-y-6">
-          <!-- Personal Information -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Data Pribadi</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label for="fullName" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                <input type="text" id="fullName" name="fullName" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-              </div>
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon/WhatsApp</label>
-                <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-              </div>
-              <div>
-                <label for="address" class="block text-sm font-medium text-gray-700">Alamat</label>
-                <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-              </div>
-            </div>
+      <h2 class="text-2xl font-bold text-center mb-8">Ada Pertanyaan Hukum?</h2>
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <form id="legalQuestionForm">
+          <div class="mb-4">
+            <label for="legalQuestion" class="block text-gray-700 font-medium mb-2">Pertanyaan Anda</label>
+            <textarea id="legalQuestion" name="legalQuestion" rows="5" 
+              class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+              placeholder="Tulis pertanyaan hukum Anda di sini..."></textarea>
           </div>
-          
-          <!-- Consultation Details -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Detail Konsultasi</h3>
-            <div class="space-y-4">
-              <div>
-                <label for="consultationType" class="block text-sm font-medium text-gray-700">Jenis Konsultasi</label>
-                <select id="consultationType" name="consultationType" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-                  <option value="">Pilih Jenis Konsultasi</option>
-                  <option value="Hukum Perdata">Hukum Perdata</option>
-                  <option value="Hukum Pidana">Hukum Pidana</option>
-                  <option value="Hukum Bisnis">Hukum Bisnis</option>
-                  <option value="Hukum Keluarga">Hukum Keluarga</option>
-                  <option value="Lainnya">Lainnya</option>
-                </select>
-              </div>
-              <div>
-                <label for="consultationDate" class="block text-sm font-medium text-gray-700">Tanggal Konsultasi</label>
-                <input type="date" id="consultationDate" name="consultationDate" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-              </div>
-              <div>
-                <label for="consultationTime" class="block text-sm font-medium text-gray-700">Waktu Konsultasi</label>
-                <select id="consultationTime" name="consultationTime" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
-                  <option value="">Pilih Waktu</option>
-                  <option value="09:00 - 10:00">09:00 - 10:00</option>
-                  <option value="10:00 - 11:00">10:00 - 11:00</option>
-                  <option value="11:00 - 12:00">11:00 - 12:00</option>
-                  <option value="13:00 - 14:00">13:00 - 14:00</option>
-                  <option value="14:00 - 15:00">14:00 - 15:00</option>
-                  <option value="15:00 - 16:00">15:00 - 16:00</option>
-                </select>
-              </div>
-              <div>
-                <label for="caseDescription" class="block text-sm font-medium text-gray-700">Deskripsi Kasus</label>
-                <textarea id="caseDescription" name="caseDescription" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required></textarea>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Payment Option -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Paket Konsultasi</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="250000">
-                <h4 class="font-medium">Konsultasi Dasar</h4>
-                <p class="text-lg font-bold text-green-600">Rp 250.000</p>
-                <p class="text-sm text-gray-600">Konsultasi online 1 jam</p>
-              </div>
-              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="500000">
-                <h4 class="font-medium">Konsultasi Standar</h4>
-                <p class="text-lg font-bold text-green-600">Rp 500.000</p>
-                <p class="text-sm text-gray-600">Konsultasi online 2 jam + dokumen review</p>
-              </div>
-              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="1000000">
-                <h4 class="font-medium">Konsultasi Premium</h4>
-                <p class="text-lg font-bold text-green-600">Rp 1.000.000</p>
-                <p class="text-sm text-gray-600">Konsultasi prioritas 3 jam + dokumen review + follow-up</p>
-              </div>
-            </div>
-            <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
-            <input type="hidden" id="packagePrice" name="packagePrice" value="">
-          </div>
-          
-          <div class="flex justify-center">
-            <button type="button" id="generateInvoiceBtn" class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">Buat Invoice</button>
+          <div class="text-center">
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-colors">
+              Ajukan Pertanyaan
+            </button>
           </div>
         </form>
-        
-        <!-- Invoice Modal -->
-        <div id="invoiceModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-xl font-bold">Invoice Konsultasi Hukum</h3>
-              <button id="closeInvoice" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            
-            <div id="invoiceContent" class="mb-6">
-              <!-- Invoice content will be generated here -->
-            </div>
-            
-            <div class="flex justify-between">
-              <button id="printInvoice" class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors">
-                <i class="fas fa-print mr-2"></i> Cetak
-              </button>
-              <button id="submitToWhatsApp" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
-                <i class="fab fa-whatsapp mr-2"></i> Kirim ke WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
   
-    
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-gray-800">Login Diperlukan</h3>
+        <button id="closeLoginModal" class="text-gray-400 hover:text-gray-600">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="mb-6">
+        <p class="text-gray-600 mb-4">Silakan login terlebih dahulu untuk mengajukan pertanyaan hukum.</p>
+        <form id="loginForm">
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email" 
+              class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+              placeholder="Email Anda">
+          </div>
+          <div class="mb-6">
+            <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+            <input type="password" id="password" name="password" 
+              class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-green-500"
+              placeholder="Password">
+          </div>
+          <div class="flex justify-between items-center">
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
+              Login
+            </button>
+            <a href="#" class="text-green-600 hover:text-green-700 text-sm">Daftar Akun Baru</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const questionForm = document.getElementById('legalQuestionForm');
+      const loginModal = document.getElementById('loginModal');
+      const closeLoginBtn = document.getElementById('closeLoginModal');
+      
+      // Show login modal when form is submitted
+      questionForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        loginModal.classList.remove('hidden');
+      });
+      
+      // Close modal when close button is clicked
+      closeLoginBtn.addEventListener('click', function() {
+        loginModal.classList.add('hidden');
+      });
+      
+      // Close modal when clicking outside
+      window.addEventListener('click', function(e) {
+        if (e.target === loginModal) {
+          loginModal.classList.add('hidden');
+        }
+      });
+      
+      // For demo purposes - prevent default on login form
+      const loginForm = document.getElementById('loginForm');
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically handle the login process
+        alert('Login functionality would be implemented here');
+      });
+    });
+  </script>
 
 <!-- Footer Section -->
 <footer class="bg-gray-900 text-white pt-12 pb-6">
