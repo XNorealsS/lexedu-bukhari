@@ -3,444 +3,1142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LexEdu - Hukum dan Edukasi</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>LexEdu</title>
     <style>
-        /* General Styles */
+        :root {
+            --primary-green: #23b056;
+            --gold-yellow: #d4a017;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
         }
-        
-        .diagonal-bg {
-            background: linear-gradient(135deg, #f4f4f4 60%, #f0d78c 40%);
+
+        /* Header and Navigation */
+        .header {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        /* Logo Styles */
+
+        .nav-logo {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
         .logo-text {
             font-size: 24px;
             font-weight: bold;
-        }
-        
-        .logo-text .lex {
             color: #31a24c;
         }
-        
-        .logo-text .edu {
+
+        .logo-text span {
             color: #e3b53b;
         }
-        
+
+        .navbar {
+            width: 80%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(45deg, transparent 10%, #1fad4d 1%);
+            border-radius: 0 0 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            margin-left: 33px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #fef08a;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Search and Contact Section */
+        .search-contact {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-right: 20px;
+        }
+
+        .search-bar input {
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #e5e5e5;
+            width: 15rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(35, 176, 86, 0.2);
+        }
+
+        .search-contact a {
+            background: #eab308;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .search-contact a:hover {
+            background: #ca8a04;
+            transform: translateY(-2px);
+        }
+
+        .keterangan {
+            display: flex;
+            justify-content: center;
+            padding: 12px 20px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .emanoil p {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .emanoil p i {
+            color: var(--primary-green);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger:hover {
+            color: var(--gold-yellow);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            padding: 20px;
+            flex-direction: column;
+            border-radius: 0 0 8px 8px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #f0f0f0;
+            color: var(--primary-green);
+        }
+
+        .mobile-search-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .mobile-search-bar input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .mobile-search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .mobile-contact a {
+            display: block;
+            background: #eab308;
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-contact a:hover {
+            background: #ca8a04;
+        }
+
         /* Carousel Styles */
         .carousel {
             position: relative;
             overflow: hidden;
-            background-color: #dedede;
+            margin-bottom: 2rem;
         }
-        
+
         .carousel-slide {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            height: auto !important;
+            min-height: 20rem;
         }
-        
+
         .carousel-item {
             flex: 0 0 100%;
             max-width: 100%;
-            background-color: #4b4b4b;
+            padding: 2rem;
+            box-sizing: border-box;
         }
-        
-        .carousel-indicators {
+
+        .carousel-item .container {
             display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel-item > .container > div {
+            flex: 1 1 100%;
+        }
+
+        .carousel-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .carousel-item p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .carousel-item button {
+            margin-top: 1.5rem;
+            background-color: var(--white);
+            color: var(--primary-green);
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .carousel-item button:hover {
+            background-color: #e6f4ea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .carousel-item .content {
+            width: 100%;
+            height: 100%;
+            background-color: #4b5563;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 8px;
+            color: white;
+            font-size: 0.875rem;
+            overflow: hidden;
+        }
+
+        .carousel-indicators {
             position: absolute;
-            bottom: 12px;
+            bottom: 1.5rem;
             left: 0;
             right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            z-index: 10;
         }
-        
+
+        .dd {
+            display: flex;
+            gap: 10px;
+        }
+
         .carousel-indicator {
             width: 12px;
             height: 12px;
-            margin: 0 4px;
             background-color: #fff;
             border-radius: 50%;
             cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
         }
-        
+
         .carousel-indicator.active {
             background-color: #333;
+            opacity: 1;
+            transform: scale(1.2);
         }
-        
+
+        .carousel-indicator:hover {
+            opacity: 0.9;
+        }
+
         /* Section Styles */
         .section-title {
             position: relative;
             color: #e3b53b;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
-            font-size: 1.8rem;
-            font-weight: 500;
+            font-size: 2rem;
+            font-weight: 600;
         }
-        
+
         .section-title:after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
             background-color: #e3b53b;
         }
-        
+
+        .diagonal-bg {
+            background: linear-gradient(135deg, #f4f4f4 60%, #f0d78c 40%);
+            padding: 5rem 0;
+        }
+
         .content-card {
             background-color: white;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
         }
-        
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
         .content-card-img {
             background-color: #4b4b4b;
             height: 180px;
-        }
-        
-        /* Dr. Bukhari Section */
-        .yellow-underline {
-            border-bottom: 2px solid #e3b53b;
-            display: inline-block;
-            padding-bottom: 4px;
-        }
-        
-        /* Consultation Form */
-        .consultation-form {
             position: relative;
+            overflow: hidden;
         }
-        
-        .consultation-form::after {
-            content: '';
+
+        .content-card h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-card p {
+            color: #666;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .video-container {
+            position: relative;
+            height: 100%;
+            background-color: #ddd;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .video-play-button {
             position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 180px;
-            height: 180px;
-            background-image: url('/api/placeholder/180/180');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.15;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(35, 176, 86, 0.7);
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-play-button:hover {
+            background-color: rgba(35, 176, 86, 0.85);
+        }
+
+        .video-info {
+            background-color: #fff9e5;
+            padding: 2rem;
+            border-radius: 8px;
+            height: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .video-info h2 {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .video-info h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold-yellow);
+        }
+
+        .video-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .video-info a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-green);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .video-info a:hover {
+            color: var(--gold-yellow);
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding-top: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        footer h3, footer h4 {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        footer h3 span {
+            color: var(--primary-green);
+        }
+
+        footer h4::after {
+            content: "";
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 2rem;
+            height: 2px;
+            background-color: var(--primary-green);
+        }
+
+        footer p {
+            color: #b3b3b3;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        footer ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer ul li a {
+            display: flex;
+            align-items: center;
+            color: #b3b3b3;
+            transition: all 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        footer ul li a i {
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+        }
+
+        footer .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        footer .contact-info li i {
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        footer .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            margin-top: 3rem;
+        }
+
+        footer .footer-bottom a {
+            color: #b3b3b3;
+            transition: all 0.3s ease;
+        }
+
+        footer .footer-bottom a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Responsive Styles */
+        @media screen and (min-width: 768px) {
+            .carousel-item > .container > div {
+                flex: 1 1 48%;
+            }
+
+            .content-card-img {
+                height: 160px;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .navbar {
+                width: 75%;
+            }
+
+            .search-bar input {
+                width: 12rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .keterangan {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+
+            .carousel-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .carousel-item h2 {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .content-card-img {
+                height: 120px;
+            }
+
+            .video-info {
+                margin-top: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-logo {
+                padding: 10px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .keterangan {
+                font-size: 0.9rem;
+            }
+
+            .carousel-item {
+                padding: 1rem;
+            }
+
+            .carousel-item h2 {
+                font-size: 1.1rem;
+            }
+
+            .carousel-item p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .content-card-img {
+                height: 100px;
+            }
+
+            .content-card h2 {
+                font-size: 1rem;
+            }
+
+            .video-info h2 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto">
-            <!-- Top Bar -->
-            <div class="flex justify-between items-center py-2 px-4">
-                <div class="flex items-center">
-                    <div class="logo-text">
-                        <span class="lex">Lex</span><span class="edu">Edu</span>
+<body>
+    <header class="header">
+        <div class="nav-logo">
+            <div class="logo">
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center">
+                        <div class="logo-text mr-2">Lex<span>Edu</span></div>
+                        <div class="text-xs text-gray-500">Hukum dan Edukasi</div>
                     </div>
-                    <div class="text-xs text-gray-500 ml-2">Hukum dan Edukasi</div>
-                </div>
-                
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             
-            <!-- Main Navigation -->
-            <div class="flex justify-between items-center bg-green-500 rounded-t-md">
-                <nav class="flex-1">
-                    <ul class="flex space-x-6 px-4 py-2">
-                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
-                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
-                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
-                        <li><a href="#" class="text-white hover:text-yellow-200">Home</a></li>
-                    </ul>
-                </nav>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <i class='bx bx-menu'></i>
+            </button>
+            
+            <nav class="navbar">
+                <div class="nav">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Blog</a>
+                </div>
                 
-                <div class="flex items-center px-4">
-                    <input type="text" placeholder="Cari..." class="p-1 rounded bg-white text-gray-600 text-sm w-40 mr-2">
-                    <button class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600 text-sm">Contact Us</button>
+                <div class="search-contact">
+                    <div class="search-bar">
+                        <input type="search" placeholder="Cari informasi..." aria-label="Search">
+                    </div>
+                    <a href="#">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Blog</a>
+            </div>
+            
+            <div class="mobile-search-contact">
+                <div class="mobile-search-bar">
+                    <input type="search" placeholder="Cari informasi..." aria-label="Search">
+                </div>
+                <div class="mobile-contact">
+                    <a href="#">Contact Us</a>
                 </div>
             </div>
         </div>
     </header>
-    
-    <!-- Welcome Section -->
-    <section class="py-2 bg-white border-b">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-map-marker-alt text-green-500"></i>
-                    <span class="text-sm">Selamat Datang di LexEdu</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-phone text-green-500"></i>
-                    <span class="text-sm">Nomor</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-envelope text-green-500"></i>
-                    <span class="text-sm">LexEdu@gmail.com</span>
-                </div>
-            </div>
+
+    <div class="keterangan">
+        <div class="emanoil">
+            <p><i class='bx bxs-map'></i> Selamat Datang di LexEdu</p>
         </div>
-    </section>
-    
+    </div>
+
     <!-- Carousel Section -->
     <section class="carousel relative">
         <div class="carousel-slide h-64" id="carouselSlide">
-            <div class="carousel-item text-white flex items-center">
-                <div class="container mx-auto flex px-6">
-                    <div class="w-full md:w-1/2 py-8">
-                        <h2 class="text-xl font-bold mb-4">HEADER</h2>
-                        <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
-                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
-                        <button class="mt-2 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+            <div class="carousel-item bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex flex-wrap">
+                    <div class="w-full md:w-1/2 p-4">
+                        <h2 class="text-xl mb-4">Memahami Hukum dengan Mudah</h2>
+                        <p class="mb-4">Kami menyediakan materi hukum yang dikemas secara sederhana dan mudah dipahami untuk semua kalangan.</p>
+                        <p class="mb-4">Tingkatkan literasi hukum Anda bersama LexEdu dengan konten yang informatif dan terstruktur.</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Pelajari Lebih Lanjut</button>
                     </div>
-                    <div class="hidden md:flex w-1/2 items-center justify-center">
-                        <div class="bg-gray-600 rounded flex items-center justify-center w-full h-48">
-                            <span class="text-white text-sm">Content W x H</span>
+                    <div class="hidden md:block w-1/2 p-4">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Ilustrasi Edukasi Hukum</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item text-white flex items-center">
-                <div class="container mx-auto flex px-6">
-                    <div class="w-full md:w-1/2 py-8">
-                        <h2 class="text-xl font-bold mb-4">HEADER</h2>
-                        <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
-                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
-                        <button class="mt-2 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+            <div class="carousel-item bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex flex-wrap">
+                    <div class="w-full md:w-1/2 p-4">
+                        <h2 class="text-xl mb-4">Konsultasi Hukum Online</h2>
+                        <p class="mb-4">Dapatkan solusi untuk permasalahan hukum Anda melalui layanan konsultasi online kami.</p>
+                        <p class="mb-4">Tim ahli kami siap membantu dengan panduan profesional dan terpercaya.</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Konsultasi Sekarang</button>
                     </div>
-                    <div class="hidden md:flex w-1/2 items-center justify-center">
-                        <div class="bg-gray-600 rounded flex items-center justify-center w-full h-48">
-                            <span class="text-white text-sm">Content W x H</span>
+                    <div class="hidden md:block w-1/2 p-4">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Konsultasi Online</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item text-white flex items-center">
-                <div class="container mx-auto flex px-6">
-                    <div class="w-full md:w-1/2 py-8">
-                        <h2 class="text-xl font-bold mb-4">HEADER</h2>
-                        <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, voluptatem.</p>
-                        <p class="mb-4">NSJDHASJDKASJKDAS JKDHASKJDHASKJDHASJKD ASJKDHASKJDHASJKD</p>
-                        <button class="mt-2 bg-white text-green-600 px-4 py-2 rounded-md">Button</button>
+            <div class="carousel-item bg-gray-700 text-white flex items-center">
+                <div class="container mx-auto flex flex-wrap">
+                    <div class="w-full md:w-1/2 p-4">
+                        <h2 class="text-xl mb-4">Webinar & Pelatihan</h2>
+                        <p class="mb-4">Ikuti berbagai webinar dan pelatihan hukum untuk meningkatkan pengetahuan Anda.</p>
+                        <p class="mb-4">Program interaktif dengan pembicara berpengalaman di bidang hukum dan pendidikan.</p>
+                        <button class="mt-4 bg-white text-green-600 px-4 py-2 rounded-md">Lihat Jadwal</button>
                     </div>
-                    <div class="hidden md:flex w-1/2 items-center justify-center">
-                        <div class="bg-gray-600 rounded flex items-center justify-center w-full h-48">
-                            <span class="text-white text-sm">Content W x H</span>
+                    <div class="hidden md:block w-1/2 p-4">
+                        <div class="content w-full h-full flex items-center justify-center bg-gray-600 rounded">
+                            <span class="text-white text-sm">Webinar & Workshop</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="carousel-indicators">
-            <div class="carousel-indicator active" onclick="changeSlide(0)"></div>
-            <div class="carousel-indicator" onclick="changeSlide(1)"></div>
-            <div class="carousel-indicator" onclick="changeSlide(2)"></div>
+        <div class="carousel-indicators absolute bottom-4 left-0 right-0">
+            <div class="dd flex justify-center">
+                <div class="carousel-indicator active" onclick="changeSlide(0)" aria-label="Slide 1"></div>
+                <div class="carousel-indicator" onclick="changeSlide(1)" aria-label="Slide 2"></div>
+                <div class="carousel-indicator" onclick="changeSlide(2)" aria-label="Slide 3"></div>
+            </div>
         </div>
     </section>
-    
-    <!-- Informasi Dan Materi Section -->
-    <section class="py-12 diagonal-bg">
+
+    <section class="py-16 diagonal-bg">
         <div class="container mx-auto px-4">
             <h1 class="section-title">Informasi Dan Materi</h1>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <!-- Row 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
                 <div class="content-card">
                     <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">CONTENT</h2>
+                    <div class="p-5">
+                        <h2 class="text-lg font-semibold mb-2">Hukum Perdata</h2>
+                        <p class="text-gray-700">Pelajari dasar-dasar hukum perdata dan penerapannya dalam kehidupan sehari-hari.</p>
                     </div>
                 </div>
-                
+        
                 <div class="content-card">
                     <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">CONTENT</h2>
+                    <div class="p-5">
+                        <h2 class="text-lg font-semibold mb-2">Hukum Pidana</h2>
+                        <p class="text-gray-700">Pahami berbagai aspek hukum pidana dan proses peradilan di Indonesia.</p>
                     </div>
                 </div>
-                
-                <!-- Row 2 -->
+        
                 <div class="content-card">
                     <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">CONTENT</h2>
+                    <div class="p-5">
+                        <h2 class="text-lg font-semibold mb-2">Hukum Bisnis</h2>
+                        <p class="text-gray-700">Tingkatkan pengetahuan tentang aspek legal dalam menjalankan dan mengembangkan bisnis.</p>
                     </div>
                 </div>
-                
+
                 <div class="content-card">
                     <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">Header</h2>
-                        <p class="text-gray-700">JFWJDOWAAOEI NAIAWENFAISCA</p>
+                    <div class="p-5">
+                        <h2 class="text-lg font-semibold mb-2">Hak Asasi Manusia</h2>
+                        <p class="text-gray-700">Eksplorasi prinsip dasar HAM dan implementasinya dalam sistem hukum nasional.</p>
                     </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">CONTENT</h2>
-                    </div>
-                </div>
-                
-                <div class="content-card">
-                    <div class="content-card-img"></div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold">CONTENT</h2>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Information content section -->
-            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-yellow-100 rounded-md p-6">
-                    <h2 class="text-xl font-bold mb-4">HEADER</h2>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="mr-2 text-yellow-600">1.</span>
-                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-2 text-yellow-600">1.</span>
-                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-2 text-yellow-600">1.</span>
-                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-2 text-yellow-600">1.</span>
-                            <span>eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="order-first lg:order-last">
-                    <div class="h-2 bg-yellow-500 w-full mb-6"></div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Video Section -->
-    <section class="py-12 diagonal-bg">
+    <section class="video-section py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-gray-300 h-64 relative">
-                    <button class="absolute inset-0 w-full h-full bg-green-500 text-white font-bold text-lg opacity-70 hover:opacity-90">
-                        Tonton Video
-                    </button>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="video-container h-64 lg:h-auto">
+                    <div class="video-play-button">
+                        <i class="fas fa-play-circle mr-2 text-2xl"></i> Tonton Video
+                    </div>
                 </div>
                 
-                <div class="bg-yellow-100 p-6">
-                    <h2 class="text-xl font-bold mb-4">HEADER</h2>
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <a href="#" class="text-blue-500 hover:underline">Lihat selengkapnya</a>
+                <div class="video-info">
+                    <h2>Pengantar Sistem Hukum Indonesia</h2>
+                    <p>Video pengantar ini memberikan gambaran komprehensif tentang sistem hukum di Indonesia, termasuk hierarki peraturan perundang-undangan dan prinsip dasar yang mendasarinya.</p>
+                    <p>Cocok untuk pemula yang ingin memahami struktur hukum Indonesia serta bagaimana berbagai peraturan diterapkan dalam praktik sehari-hari.</p>
+                    <p>Materi ini disampaikan oleh praktisi hukum berpengalaman dengan bahasa yang mudah dipahami.</p>
+                    <a href="#" class="font-medium">Lihat selengkapnya <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Dr. Bukhari Section -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <h1 class="section-title">Informasi Tentang Dr. Bukhari</h1>
+
+<!-- Legal Consultation Form Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-8">Konsultasi Hukum Online</h2>
+      
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <form id="consultationForm" class="space-y-6">
+          <!-- Personal Information -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Data Pribadi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                <input type="text" id="fullName" name="fullName" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon/WhatsApp</label>
+                <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label for="address" class="block text-sm font-medium text-gray-700">Alamat</label>
+                <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Consultation Details -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Detail Konsultasi</h3>
+            <div class="space-y-4">
+              <div>
+                <label for="consultationType" class="block text-sm font-medium text-gray-700">Jenis Konsultasi</label>
+                <select id="consultationType" name="consultationType" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                  <option value="">Pilih Jenis Konsultasi</option>
+                  <option value="Hukum Perdata">Hukum Perdata</option>
+                  <option value="Hukum Pidana">Hukum Pidana</option>
+                  <option value="Hukum Bisnis">Hukum Bisnis</option>
+                  <option value="Hukum Keluarga">Hukum Keluarga</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div>
+                <label for="consultationDate" class="block text-sm font-medium text-gray-700">Tanggal Konsultasi</label>
+                <input type="date" id="consultationDate" name="consultationDate" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label for="consultationTime" class="block text-sm font-medium text-gray-700">Waktu Konsultasi</label>
+                <select id="consultationTime" name="consultationTime" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                  <option value="">Pilih Waktu</option>
+                  <option value="09:00 - 10:00">09:00 - 10:00</option>
+                  <option value="10:00 - 11:00">10:00 - 11:00</option>
+                  <option value="11:00 - 12:00">11:00 - 12:00</option>
+                  <option value="13:00 - 14:00">13:00 - 14:00</option>
+                  <option value="14:00 - 15:00">14:00 - 15:00</option>
+                  <option value="15:00 - 16:00">15:00 - 16:00</option>
+                </select>
+              </div>
+              <div>
+                <label for="caseDescription" class="block text-sm font-medium text-gray-700">Deskripsi Kasus</label>
+                <textarea id="caseDescription" name="caseDescription" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" required></textarea>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Payment Option -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Paket Konsultasi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="250000">
+                <h4 class="font-medium">Konsultasi Dasar</h4>
+                <p class="text-lg font-bold text-green-600">Rp 250.000</p>
+                <p class="text-sm text-gray-600">Konsultasi online 1 jam</p>
+              </div>
+              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="500000">
+                <h4 class="font-medium">Konsultasi Standar</h4>
+                <p class="text-lg font-bold text-green-600">Rp 500.000</p>
+                <p class="text-sm text-gray-600">Konsultasi online 2 jam + dokumen review</p>
+              </div>
+              <div class="border border-gray-300 rounded-md p-4 hover:border-green-500 cursor-pointer package-option" data-price="1000000">
+                <h4 class="font-medium">Konsultasi Premium</h4>
+                <p class="text-lg font-bold text-green-600">Rp 1.000.000</p>
+                <p class="text-sm text-gray-600">Konsultasi prioritas 3 jam + dokumen review + follow-up</p>
+              </div>
+            </div>
+            <input type="hidden" id="selectedPackage" name="selectedPackage" value="">
+            <input type="hidden" id="packagePrice" name="packagePrice" value="">
+          </div>
+          
+          <div class="flex justify-center">
+            <button type="button" id="generateInvoiceBtn" class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">Buat Invoice</button>
+          </div>
+        </form>
+        
+        <!-- Invoice Modal -->
+        <div id="invoiceModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold">Invoice Konsultasi Hukum</h3>
+              <button id="closeInvoice" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
             
-            <div class="mt-12 bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="col-span-1">
-                        <img src="/api/placeholder/300/400" alt="Dr. Bukhari" class="w-full h-auto rounded-lg">
-                    </div>
-                    
-                    <div class="col-span-2">
-                        <div class="mb-4">
-                            <h2 class="text-xl font-bold yellow-underline">Komisioner BPSK Aceh Utara (2019–2024)</h2>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-4">Ahli Hukum Perlindungan Konsumen | Advokat | Mediator</h3>
-                        
-                        <p class="mb-4">Dr. Bukhari adalah seorang akademisi dan praktisi hukum yang aktif dalam berbagai kegiatan advokasi dan penyelesaian sengketa konsumen di Aceh. Ia menjabat sebagai Komisioner Badan Penyelesaian Sengketa Konsumen (BPSK) Aceh Utara, sebuah lembaga resmi yang bertugas menyelesaikan sengketa antara konsumen dan pelaku usaha di luar pengadilan. Selain itu, beliau juga dikenal sebagai:</p>
-                        
-                        <ul class="list-disc pl-6 mb-4">
-                            <li>Dosen hukum yang berpengalaman di bidang hukum perdata dan perlindungan hak konsumen.</li>
-                            <li>Mediator bersertifikat yang menangani berbagai kasus sengketa dengan pendekatan musyawarah.</li>
-                            <li>Advokat dengan pemahaman mendalam terhadap regulasi ketenagalistrikan, kontrak, dan perlindungan hak-hak konsumen.</li>
-                        </ul>
-                        
-                        <p class="mb-4">Dr. Bukhari juga aktif sebagai pembicara dalam berbagai forum diskusi hukum di Aceh, serta aktif mendorong edukasi masyarakat terhadap hak-hak hukum mereka, khususnya dalam hal transaksi konsumen.</p>
-                    </div>
+            <div id="invoiceContent" class="mb-6">
+              <!-- Invoice content will be generated here -->
+            </div>
+            
+            <div class="flex justify-between">
+              <button id="printInvoice" class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors">
+                <i class="fas fa-print mr-2"></i> Cetak
+              </button>
+              <button id="submitToWhatsApp" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+                <i class="fab fa-whatsapp mr-2"></i> Kirim ke WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+        <!-- Footer Top Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <!-- Company Info -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <h3 class="text-2xl font-bold">Lex<span class="text-green-500">Edu</span></h3>
+                </div>
+                <p class="text-gray-400 mb-4">Menyediakan informasi hukum dan edukasi berkualitas untuk semua kalangan. Membantu Anda memahami aspek legal dengan cara yang mudah dimengerti.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-lg transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Link Cepat</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Beranda
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Tentang Kami
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Layanan
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Blog
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> FAQ
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- Services -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Layanan Kami</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Konsultasi Hukum
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Pelatihan Legal
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Material Edukasi
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Webinar Hukum
+                    </a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 transition-colors flex items-center">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-green-500"></i> Pendampingan Legal
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 relative">
+                    <span class="relative z-10">Kontak Kami</span>
+                    <span class="absolute bottom-0 left-0 w-12 h-1 bg-green-500"></span>
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-green-500"></i>
+                        <span class="text-gray-400">Jl. Hukum Pendidikan No. 123, Jakarta Selatan, Indonesia</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt mr-3 text-green-500"></i>
+                        <span class="text-gray-400">+62 812 3456 7890</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-green-500"></i>
+                        <span class="text-gray-400">info@lexedu.id</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-clock mr-3 text-green-500"></i>
+                        <span class="text-gray-400">Senin - Jumat: 09:00 - 17:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Newsletter -->
+        <!-- <div class="bg-gray-800 p-6 rounded-lg mb-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-2">Berlangganan Newsletter</h4>
+                    <p class="text-gray-400">Dapatkan update terbaru tentang hukum dan edukasi</p>
+                </div>
+                <div class="flex flex-col sm:flex-row">
+                    <input type="email" placeholder="Email Anda" class="px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-2 sm:mb-0 sm:mr-2">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors">Berlangganan</button>
+                </div>
+            </div>
+        </div> -->
+        
+        <!-- Footer Bottom -->
+        <div class="pt-6 border-t border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 LexEdu. Hak Cipta Dilindungi.</p>
+                <div class="flex flex-wrap justify-center space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-green-500 text-sm transition-colors">Peta Situs</a>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- Konsultasi Hukum Section -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h1 class="section-title">Layanan Konsultasi Hukum</h1>
-            
-            <div class="mt-12 bg-white rounded-lg border border-gray-200 p-6 shadow-sm max-w-2xl mx-auto consultation-form">
-                <h2 class="text-2xl font-bold mb-6 text-center">FORM PENGAJUAN<br>KONSULTASI HUKUM</h2>
-                
-                <form>
-                    <div class="mb-4">
-                        <label for="nama" class="block mb-2">Nama:</label>
-                        <input type="text" id="nama" class="w-full p-2 border rounded-md">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="email" class="block mb-2">Email:</label>
-                        <input type="email" id="email" class="w-full p-2 border rounded-md">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="keluhan" class="block mb-2">Keluhan anda:</label>
-                        <textarea id="keluhan" class="w-full p-2 border rounded-md" rows="4"></textarea>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 inline-block">KIRIM PENGAJUAN</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-item');
-        const indicators = document.querySelectorAll('.carousel-indicator');
-        
-        function changeSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
-        
-        function updateCarousel() {
-            const offset = -currentSlide * 100;
-            document.getElementById('carouselSlide').style.transform = `translateX(${offset}%)`;
-            
-            indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === currentSlide);
-            });
-        }
-        
-        // Auto slideshow
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateCarousel();
-        }, 5000);
-        
-        updateCarousel();
-    </script>
+    </div>
+</footer>
+
+
+
+
+
+<script src="js/sc.js"></script>
 </body>
 </html>
